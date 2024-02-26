@@ -84,3 +84,24 @@ const char *PCS_rtems_status_text(PCS_rtems_status_code sc)
 
     return UT_GenStub_GetReturnValue(PCS_rtems_status_text, const char *);
 }
+
+/*
+ * ----------------------------------------------------
+ * Generated stub function for PCS_rtems_bsdnet_show_inet_routes()
+ * ----------------------------------------------------
+ */
+void PCS_rtems_bsdnet_show_inet_routes(void)
+{
+
+    UT_GenStub_Execute(PCS_rtems_bsdnet_show_inet_routes, Basic, NULL);
+}
+
+/*
+ * ----------------------------------------------------
+ * Generated stub function for PCS_rtems_bsdnet_show_if_stats()
+ * ----------------------------------------------------
+ */
+void PCS_rtems_bsdnet_show_if_stats(void)
+{
+    UT_GenStub_Execute(PCS_rtems_bsdnet_show_if_stats, Basic, NULL);
+}
