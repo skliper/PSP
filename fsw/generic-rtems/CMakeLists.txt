@@ -1,13 +1,13 @@
 ######################################################################
 #
-# CMAKE build recipe for pc-rtems PSP component
+# CMAKE build recipe for generic-rtems PSP component
 #
 ######################################################################
 
 # This contains the fully platform-specific code to
 # run CFE on this target.
 
-# Build the pc-rtems implementation as a library
+# Build the generic-rtems implementation as a library
 add_library(psp-${CFE_PSP_TARGETNAME}-impl OBJECT
     src/cfe_psp_exception.c
     src/cfe_psp_memory.c

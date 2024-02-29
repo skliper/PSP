@@ -67,7 +67,7 @@ jobs:
           sed -ir "s|#define CFE_PSP_IMPL_BUILD_NUMBER.*|$buildnumber_entry|" fsw/pc-linux/inc/psp_version.h
           
           buildnumber_entry=$'#define CFE_PSP_IMPL_BUILD_NUMBER   '${rev_num}
-          sed -ir "s|#define CFE_PSP_IMPL_BUILD_NUMBER.*|$buildnumber_entry|" fsw/pc-rtems/inc/psp_version.h
+          sed -ir "s|#define CFE_PSP_IMPL_BUILD_NUMBER.*|$buildnumber_entry|" fsw/generic-rtems/inc/psp_version.h
       - name: Commit and Push Updates to IC Branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -76,6 +76,6 @@ jobs:
           git add CHANGELOG.md
           git add fsw/mcp750-vxworks/inc/psp_version.h
           git add fsw/pc-linux/inc/psp_version.h
-          git add fsw/pc-rtems/inc/psp_version.h
+          git add fsw/generic-rtems/inc/psp_version.h
           git commit -m "Updating documentation and version numbers for v1.6.0-rc4+dev${rev_num}"
           git push -v origin integration-candidate

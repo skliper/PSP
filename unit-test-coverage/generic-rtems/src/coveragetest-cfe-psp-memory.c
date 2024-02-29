@@ -16,7 +16,7 @@
  * limitations under the License.
  ************************************************************************/
 
-#include "coveragetest-psp-pc-rtems.h"
+#include "coveragetest-psp-generic-rtems.h"
 
 #include "cfe_psp.h"
 #include "PCS_stdlib.h"

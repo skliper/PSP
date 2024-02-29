@@ -85,7 +85,7 @@ typedef struct
 */
 CFE_PSP_ReservedMemoryMap_t CFE_PSP_ReservedMemoryMap = {0};
 
-CFE_PSP_MemoryBlock_t PcRtems_ReservedMemBlock;
+CFE_PSP_MemoryBlock_t GenericRtems_ReservedMemBlock;
 
 /*
 *********************************************************************************
@@ -330,16 +330,16 @@ void CFE_PSP_SetupReservedMemoryMap(void)
 
     OS_printf("Size of BSP reserved memory = %u bytes\n", (unsigned int)RequiredSize);
 
-    PcRtems_ReservedMemBlock.BlockPtr = malloc(RequiredSize);
+    GenericRtems_ReservedMemBlock.BlockPtr = malloc(RequiredSize);
 
-    if (PcRtems_ReservedMemBlock.BlockPtr == NULL)
+    if (GenericRtems_ReservedMemBlock.BlockPtr == NULL)
     {
         OS_printf("CFE_PSP: Error: Cannot malloc BSP reserved memory!\n");
         abort();
     }
 
-    PcRtems_ReservedMemBlock.BlockSize = RequiredSize;
-    ReservedMemoryAddr                 = (cpuaddr)PcRtems_ReservedMemBlock.BlockPtr;
+    GenericRtems_ReservedMemBlock.BlockSize = RequiredSize;
+    ReservedMemoryAddr                 = (cpuaddr)GenericRtems_ReservedMemBlock.BlockPtr;
 
     OS_printf("CFE_PSP: Allocated %u bytes for PSP reserved memory at: 0x%08lX\n", (unsigned int)RequiredSize,
               (unsigned long)ReservedMemoryAddr);
@@ -396,7 +396,7 @@ void CFE_PSP_SetupReservedMemoryMap(void)
 int32 CFE_PSP_InitProcessorReservedMemory(uint32 RestartType)
 {
     OS_printf("CFE_PSP: Clearing Processor Reserved Memory.\n");
-    memset(PcRtems_ReservedMemBlock.BlockPtr, 0, PcRtems_ReservedMemBlock.BlockSize);
+    memset(GenericRtems_ReservedMemBlock.BlockPtr, 0, GenericRtems_ReservedMemBlock.BlockSize);
     return CFE_PSP_SUCCESS;
 }
 

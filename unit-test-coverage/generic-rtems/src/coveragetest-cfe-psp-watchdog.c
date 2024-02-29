@@ -16,16 +16,45 @@
  * limitations under the License.
  ************************************************************************/
 
-#include "coveragetest-psp-pc-rtems.h"
+#include "coveragetest-psp-generic-rtems.h"
 
 #include "cfe_psp.h"
 
-void Test_CFE_PSP_InitSSR(void)
-{
-    uint32 bus          = 1;
-    uint32 device       = 1;
-    char   DeviceName[] = "TestDevice";
+extern uint32 CFE_PSP_WatchdogValue;
 
-    /* Placeholder test to exercise function - amend tests if/when function is fully implemented */
-    UtAssert_INT32_EQ(CFE_PSP_InitSSR(bus, device, DeviceName), CFE_PSP_SUCCESS);
+/* Placeholder coverage test */
+void Test_CFE_PSP_WatchdogInit(void)
+{
+    CFE_PSP_WatchdogInit();
+}
+
+/* Placeholder coverage test */
+void Test_CFE_PSP_WatchdogEnable(void)
+{
+    CFE_PSP_WatchdogEnable();
+}
+
+/* Placeholder coverage test */
+void Test_CFE_PSP_WatchdogDisable(void)
+{
+    CFE_PSP_WatchdogDisable();
+}
+
+/* Placeholder coverage test */
+void Test_CFE_PSP_WatchdogService(void)
+{
+    CFE_PSP_WatchdogService();
+}
+
+void Test_CFE_PSP_WatchdogGet(void)
+{
+    UtAssert_INT32_EQ(CFE_PSP_WatchdogGet(), CFE_PSP_WatchdogValue);
+}
+
+void Test_CFE_PSP_WatchdogSet(void)
+{
+    uint32 WatchdogValueToSet = 42;
+
+    CFE_PSP_WatchdogSet(WatchdogValueToSet);
+    UtAssert_INT32_EQ(CFE_PSP_WatchdogValue, WatchdogValueToSet);
 }
