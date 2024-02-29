@@ -13,7 +13,7 @@
 
 project(PSPCOVERAGE C)
 
-set(PSPCOVERAGE_TARGETS mcp750-vxworks pc-rtems CACHE STRING "PSP target(s) to build coverage tests for (default=all)")
+set(PSPCOVERAGE_TARGETS mcp750-vxworks generic-rtems CACHE STRING "PSP target(s) to build coverage tests for (default=all)")
 
 # Check that coverage has been implemented for this PSPTYPE
 foreach(PSPTYPE ${PSPCOVERAGE_TARGETS})

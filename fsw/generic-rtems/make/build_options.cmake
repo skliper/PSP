@@ -1,6 +1,6 @@
 ##########################################################################
 #
-# Build options for "pc-rtems" PSP
+# Build options for "generic-rtems" PSP
 # This file specifies any global-scope compiler options when using this PSP
 #
 ##########################################################################

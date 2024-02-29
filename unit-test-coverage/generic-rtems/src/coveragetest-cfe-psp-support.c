@@ -16,45 +16,48 @@
  * limitations under the License.
  ************************************************************************/
 
-#include "coveragetest-psp-pc-rtems.h"
-
 #include "cfe_psp.h"
 
-extern uint32 CFE_PSP_WatchdogValue;
+#include "coveragetest-psp-generic-rtems.h"
 
-/* Placeholder coverage test */
-void Test_CFE_PSP_WatchdogInit(void)
+#include "PCS_stdlib.h"
+#include "PCS_cfe_configdata.h"
+
+void Test_CFE_PSP_Restart(void)
 {
-    CFE_PSP_WatchdogInit();
+    CFE_PSP_Restart(CFE_PSP_RST_TYPE_PROCESSOR);
+    UtAssert_STUB_COUNT(PCS_exit, 1);
+    UT_ResetState(UT_KEY(PCS_exit)); /* Reset so cleared for next test */
+
+    CFE_PSP_Restart(CFE_PSP_RST_TYPE_POWERON);
+    UtAssert_STUB_COUNT(PCS_exit, 1);
+}
+
+void Test_CFE_PSP_Panic(void)
+{
+    CFE_PSP_Panic(0);
+    UtAssert_STUB_COUNT(OS_ApplicationExit, 1);
 }
 
 /* Placeholder coverage test */
-void Test_CFE_PSP_WatchdogEnable(void)
+void Test_CFE_PSP_FlushCaches(void)
 {
-    CFE_PSP_WatchdogEnable();
+    CFE_PSP_FlushCaches(0, NULL, 0);
+    CFE_PSP_FlushCaches(1, NULL, 0);
 }
 
-/* Placeholder coverage test */
-void Test_CFE_PSP_WatchdogDisable(void)
+void Test_CFE_PSP_GetProcessorId(void)
 {
-    CFE_PSP_WatchdogDisable();
+    UtAssert_INT32_EQ(CFE_PSP_GetProcessorId(), PCS_CONFIG_CPUNUMBER);
 }
 
-/* Placeholder coverage test */
-void Test_CFE_PSP_WatchdogService(void)
+void Test_CFE_PSP_GetSpacecraftId(void)
 {
-    CFE_PSP_WatchdogService();
+    UtAssert_INT32_EQ(CFE_PSP_GetSpacecraftId(), PCS_CONFIG_SPACECRAFT);
 }
 
-void Test_CFE_PSP_WatchdogGet(void)
+void Test_CFE_PSP_GetProcessorName(void)
 {
-    UtAssert_INT32_EQ(CFE_PSP_WatchdogGet(), CFE_PSP_WatchdogValue);
-}
-
-void Test_CFE_PSP_WatchdogSet(void)
-{
-    uint32 WatchdogValueToSet = 42;
-
-    CFE_PSP_WatchdogSet(WatchdogValueToSet);
-    UtAssert_INT32_EQ(CFE_PSP_WatchdogValue, WatchdogValueToSet);
+    UtAssert_STRINGBUF_EQ(CFE_PSP_GetProcessorName(), UTASSERT_STRINGBUF_NULL_TERM, PCS_CONFIG_CPUNAME,
+                          UTASSERT_STRINGBUF_NULL_TERM);
 }

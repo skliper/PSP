@@ -63,7 +63,7 @@
  * Track the overall "reserved memory block" at the start of RAM.
  * This single large block is then subdivided into separate areas for CFE use.
  */
-extern CFE_PSP_MemoryBlock_t PcRtems_ReservedMemBlock;
+extern CFE_PSP_MemoryBlock_t GenericRtems_ReservedMemBlock;
 
 /*----------------------------------------------------------------
  *
@@ -73,7 +73,7 @@ extern CFE_PSP_MemoryBlock_t PcRtems_ReservedMemBlock;
  *-----------------------------------------------------------------*/
 void CFE_PSP_Restart(uint32 resetType)
 {
-    CFE_PSP_FlushCaches(1, PcRtems_ReservedMemBlock.BlockPtr, PcRtems_ReservedMemBlock.BlockSize);
+    CFE_PSP_FlushCaches(1, GenericRtems_ReservedMemBlock.BlockPtr, GenericRtems_ReservedMemBlock.BlockSize);
     OS_printf("%s is not implemented on this platform ( yet ! )\n", __func__);
     exit(EXIT_FAILURE);
 }

@@ -54,7 +54,7 @@
 */
 typedef struct
 {
-    /* not currently used in PC-RTEMS */
+    /* not currently used in GENERIC-RTEMS */
     uint32 reserved;
 } CFE_PSP_ReservedMemoryBootRecord_t;
 
@@ -68,7 +68,7 @@ typedef rtems_id CFE_PSP_Exception_SysTaskId_t;
  *
  * This may be stored in a persistent exception log file for later analysis.
  *
- * On PC-RTEMS, this is reserved for future use.  Exception handling is not
+ * On GENERIC-RTEMS, this is reserved for future use.  Exception handling is not
  * currently implemented.
  */
 typedef struct

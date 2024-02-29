@@ -1,10 +1,10 @@
 ######################################################################
 #
-# CMake build recipe for pc-rtems PSP white-box coverage tests
+# CMake build recipe for generic-rtems PSP white-box coverage tests
 #
 ######################################################################
 
-include_directories(${CFEPSP_SOURCE_DIR}/fsw/pc-rtems/inc)
+include_directories(${CFEPSP_SOURCE_DIR}/fsw/generic-rtems/inc)
 include_directories(${PSPCOVERAGE_SOURCE_DIR}/shared/inc)
 
 # Target names use a "ut" prefix to avoid confusion with the FSW targets
@@ -29,7 +29,7 @@ add_executable(coverage-${CFE_PSP_TARGETNAME}-testrunner
     src/coveragetest-cfe-psp-start.c
     src/coveragetest-cfe-psp-support.c
     src/coveragetest-cfe-psp-watchdog.c
-    src/coveragetest-psp-pc-rtems.c
+    src/coveragetest-psp-generic-rtems.c
     $<TARGET_OBJECTS:psp-${CFE_PSP_TARGETNAME}-shared>
     $<TARGET_OBJECTS:psp-${CFE_PSP_TARGETNAME}-impl>
 )

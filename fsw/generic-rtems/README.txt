@@ -1,8 +1,8 @@
-ABOUT THE PC-RTEMS CFE PSP
+ABOUT THE GENERIC-RTEMS CFE PSP
 ==========================
 Note: These instructions are for RTEMS 4.11
 
-The "pc-rtems" PSP layer is intended to be an easy way to prove out the basic functionality
+The "generic-rtems" PSP layer is intended to be an easy way to prove out the basic functionality
 of CFE running on RTEMS without actually requiring a real hardware target with RTEMS support.  
 
 It is based on:
@@ -80,13 +80,13 @@ like this if not already present (prior to the "project()" function):
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/../psp/cmake/Modules" ${CMAKE_MODULE_PATH})
 
 
-II. Mission setup modifications to use PC-RTEMS PSP
+II. Mission setup modifications to use GENERIC-RTEMS PSP
 
 Use a CMake toolchain file to build CFE for RTEMS.  This goes under the mission's "_defs" top-level directory.
 This example below may be edited and tuned to the mission-specific needs.
 
 Specifically this file should be called "toolchain-<ARCHNAME>.cmake" where <ARCHNAME> can be anything such as 
-"cpu3" or "i686-pc-rtems".
+"cpu3" or "i686-generic-rtems".
 
 Then in the "targets.cmake" file set the "TGT<N>_PLATFORM" variable to be the same ARCHNAME and the toolchain
 file will be picked up and used by the build system.
@@ -102,7 +102,7 @@ file will be picked up and used by the build system.
 # Note that to use this, the "RTEMS" platform module may need to be added 
 # to the system-wide CMake installation as a default CMake does not yet 
 # recognize RTEMS as a system name.  An example of this is distributed with
-# the pc-rtems PSP.
+# the generic-rtems PSP.
 
 # Basic cross system configuration
 set(CMAKE_SYSTEM_NAME       RTEMS)
@@ -151,8 +151,8 @@ SET(CMAKE_PREFIX_PATH                   /)
 
 # these settings are specific to cFE/OSAL and determines which
 # abstraction layers are built when using this toolchain
-SET(CFE_SYSTEM_PSPNAME                  pc-rtems)
-SET(OSAL_SYSTEM_BSPTYPE                 pc-rtems)
+SET(CFE_SYSTEM_PSPNAME                  generic-rtems)
+SET(OSAL_SYSTEM_BSPTYPE                 generic-rtems)
 SET(OSAL_SYSTEM_OSTYPE                  rtems)
 
 # Info regarding the RELOCADDR:

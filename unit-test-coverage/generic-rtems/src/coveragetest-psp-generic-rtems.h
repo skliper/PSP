@@ -16,8 +16,8 @@
  * limitations under the License.
  ************************************************************************/
 
-#ifndef COVERAGETEST_PSP_PC_RTEMS_H
-#define COVERAGETEST_PSP_PC_RTEMS_H
+#ifndef COVERAGETEST_PSP_GENERIC_RTEMS_H
+#define COVERAGETEST_PSP_GENERIC_RTEMS_H
 
 #include "utassert.h"
 #include "uttest.h"
